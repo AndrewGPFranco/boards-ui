@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        backgroundAuth: 'linear-gradient(180deg, hsl(240 10% 3.9%), hsl(240 8% 6%))',
+      },
+    },
   },
   plugins: [],
 }

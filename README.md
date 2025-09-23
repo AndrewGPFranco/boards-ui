@@ -15,6 +15,7 @@ O **Quadros Geeks** é uma plataforma que permite aos usuários organizar e acom
 
 ### Frontend
 - **Vue.js**
+- **Tailwind**
 
 ### Backend
 - **Redis**

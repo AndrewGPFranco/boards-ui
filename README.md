@@ -1,58 +1,31 @@
-# boards-ui
+# Quadros Geeks
 
-This template should help get you started developing with Vue 3 in Vite.
+Uma aplicação web moderna para gerenciamento de progresso de leitura de mangás e visualização de animes, inspirada no sistema de boards do Kanban.
 
-## Recommended IDE Setup
+## Sobre o Projeto
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+O **Quadros Geeks** é uma plataforma que permite aos usuários organizar e acompanhar seu progresso de consumo de conteúdo otaku de forma visual e intuitiva. Com um sistema baseado em quadros (boards), você pode facilmente categorizar e gerenciar:
 
-## Type Support for `.vue` Imports in TS
+- **Lendo/Assistindo**: Conteúdo atual em progresso
+- **Planejado**: Próximos mangás e animes da sua lista
+- **Pausado**: Conteúdo temporariamente interrompido
+- **Concluído**: Mangás e animes finalizados
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Tecnologias Utilizadas
 
-## Customize configuration
+### Frontend
+- **Vue.js**
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Backend
+- **Redis**
+- **RabbitMQ**
+- **Java + Spring**
 
-## Project Setup
+### Banco de Dados
+- **PostgreSQL**
 
-```sh
-npm install
-```
+### DevOps e Ferramentas
+- **Docker**
+- **Docker Compose**
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
+---

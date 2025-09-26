@@ -152,11 +152,12 @@
 
 <script setup lang="ts">
 import {ref} from "vue";
-import ResponseAPI from "@/utils/ResponseAPI";
+import router from "@/router";
+import useToast from "@/composables/useToast";
 import UserService from "@/services/UserService";
 import type {IUserRegister} from "@/types/interfaces/IUserRegister";
-import router from "@/router";
 
+const toast = useToast();
 const authService = new UserService();
 
 const user = ref<IUserRegister>({
@@ -177,14 +178,13 @@ const register = async () => {
     return;
   }
 
-  await authService
-      .registrarUsuario(user.value)
-      .then((response: ResponseAPI<string>) => {
-        alert(response.getResponse());
-        router.push({name: "Home"})
-      })
-      .catch((error: ResponseAPI<string>) => {
-        alert(error.getResponse());
-      });
+  const responseAPI = await authService.registrarUsuario(user.value);
+
+  if (responseAPI.getError())
+    toast.addToast(String(responseAPI.getResponse()), "error");
+  else {
+    toast.addToast(String(responseAPI.getResponse()), "success");
+    await router.push({name: "Home"});
+  }
 };
 </script>

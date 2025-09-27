@@ -1,32 +1,51 @@
-import {ref} from "vue";
-import type {IToast} from "@/types/interfaces/IToast";
+import { ref } from "vue";
+import type { IToast } from "@/types/interfaces/IToast";
 
 let id = 0;
 const toasts = ref<Array<IToast>>([]);
 
 export default function useToast() {
-    function addToast(message: string, type: string): void {
-        const idNew = id++;
+  function success(message: string): void {
+    addToast(message, "success");
+  }
 
-        const toast: IToast = {
-            id: idNew,
-            message,
-            type: type,
-        };
+  function error(message: string): void {
+    addToast(message, "error");
+  }
 
-        toasts.value.push(toast);
+  function info(message: string): void {
+    addToast(message, "info");
+  }
 
-        setTimeout(() => {
-            removeToast(toast);
-        }, 3000);
-    }
+  function warning(message: string): void {
+    addToast(message, "warning");
+  }
 
-    function removeToast(toast: IToast): void {
-        toasts.value = toasts.value.filter((t: IToast) => t.id !== toast.id);
-    }
+  function addToast(message: string, type: string): void {
+    const idNew = id++;
 
-    return {
-        toasts,
-        addToast,
+    const toast: IToast = {
+      id: idNew,
+      message,
+      type: type,
     };
+
+    toasts.value.push(toast);
+
+    setTimeout(() => {
+      removeToast(toast);
+    }, 3000);
+  }
+
+  function removeToast(toast: IToast): void {
+    toasts.value = toasts.value.filter((t: IToast) => t.id !== toast.id);
+  }
+
+  return {
+    toasts,
+    success,
+    error,
+    info,
+    warning,
+  };
 }

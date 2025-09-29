@@ -140,7 +140,7 @@
             <footer class="flex gap-2 justify-center mt-2">
                 <p class="text-white">Já possui uma conta?</p>
                 <router-link
-                    to="/auth/login"
+                    :to="{ name: 'Login' }"
                     class="text-textBtn hover:underline font-bold"
                 >
                     Faça login

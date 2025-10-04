@@ -18,6 +18,11 @@ const router = createRouter({
             name: "Login",
             component: () => import("@/views/Login.vue"),
         },
+        {
+            path: "/boards",
+            name: "Boards",
+            component: () => import("@/views/Kanban.vue"),
+        },
     ],
 });
 

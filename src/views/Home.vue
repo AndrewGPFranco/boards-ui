@@ -6,6 +6,7 @@
     </div>
     <div v-else>
       <p class="font-bold">Bem vindo a Plataforma </p>
+      <router-link :to="{ name: 'Boards' }">Boards</router-link>
     </div>
   </section>
 </template>

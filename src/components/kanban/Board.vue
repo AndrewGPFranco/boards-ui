@@ -1,9 +1,9 @@
 <template>
-  <section class="bg-gray-50 flex flex-col gap-4 p-4 min-h-96 min-w-96 rounded-xl overflow-y-auto">
+  <section id="board" class="bg-gray-50 flex flex-col gap-4 p-4 min-w-96 rounded-xl overflow-y-auto">
     <div class="flex items-center justify-between">
       <div class="flex flex-col gap-1">
         <div class="flex gap-2 items-center">
-          <span class="status rounded-full"></span>
+          <span id="status" class="rounded-full"></span>
           <h1 class="font-bold text-lg">{{ titulo }}</h1>
         </div>
         <span class="text-sm text-gray-600">{{ descricao }}</span>
@@ -55,7 +55,18 @@ const itens = ref([...props.itensBoard])
 </script>
 
 <style scoped>
-.status {
+#board {
+  min-height: 500px;
+  max-height: 500px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#board::-webkit-scrollbar {
+  display: none;
+}
+
+#status {
   height: 14px;
   width: 14px;
   background-color: aquamarine;

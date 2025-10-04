@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-col p-8 bg-backgroundAuth h-screen w-screen">
+  <main class="flex flex-col p-8 bg-backgroundAuth min-h-screen h-auto w-screen">
     <section class="flex justify-between items-center">
       <div class="flex flex-col gap-3">
         <h1 class="text-textBtn font-bold text-5xl">Quadros</h1>
@@ -42,13 +42,16 @@
       />
     </div>
 
-    <section class="flex justify-center items-center gap-4 mt-8">
-      <Board v-if="boardsUsuario !== null" v-for="board in boardsUsuario"
-             :key="board.id"
-             :titulo="board.titulo"
-             :descricao="board.descricao"
-             :itens-board="board.itensBoard"
-      />
+    <section class="overflow-x-auto mt-20 pb-4">
+      <div class="inline-flex items-center gap-4 mx-auto">
+        <Board v-if="boardsUsuario !== null"
+               v-for="board in boardsUsuario"
+               :key="`${board.id}-${board.itensBoard?.length || 0}`"
+               :titulo="board.titulo"
+               :descricao="board.descricao"
+               :itens-board="board.itensBoard"
+        />
+      </div>
     </section>
   </main>
 </template>
@@ -92,7 +95,6 @@ const getBoardsUsuario = async () => {
   else
     boardsUsuario.value = [];
 };
-
 
 const handleNew = async (form: string) => {
   await getBoardsUsuario();

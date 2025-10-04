@@ -1,3 +1,4 @@
+import {validaToken} from "@/utils/Utils.ts";
 import {createRouter, createWebHistory} from "vue-router";
 
 const router = createRouter({
@@ -25,5 +26,36 @@ const router = createRouter({
         },
     ],
 });
+
+router.beforeEach((to, from, next) => {
+    const rotasPublicas = ['Login', 'UserRegister'];
+    const token: string | null = localStorage.getItem("token");
+
+    if (rotasPublicas.includes(to.name as string)) {
+        next();
+        return;
+    }
+
+    if (!token) {
+        next({
+            path: 'auth/login',
+            replace: true
+        });
+        return;
+    }
+
+    const isValido = validaToken(token);
+
+    if (!isValido) {
+        next({
+            path: 'auth/login',
+            replace: true
+        });
+        return;
+    }
+
+    next();
+});
+
 
 export default router;

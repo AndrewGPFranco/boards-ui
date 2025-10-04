@@ -50,3 +50,11 @@ export interface IAddItem {
     categoryType: string;
     idBoard: string;
 }
+
+export interface IDecodeJWT {
+    email: string;
+    exp: number;
+    id: string;
+    iss: string;
+    sub: string;
+}

@@ -5,18 +5,19 @@
  * @author andrewgo
  */
 class ResponseAPI<RESPONSE> {
-  constructor(
-    public error: boolean,
-    public response: RESPONSE | null,
-  ) {}
+    constructor(
+        public error: boolean,
+        public response: RESPONSE | null,
+    ) {
+    }
 
-  getError(): boolean {
-    return this.error;
-  }
+    getError(): boolean {
+        return this.error;
+    }
 
-  getResponse(): RESPONSE | null {
-    return this.response;
-  }
+    getResponse(): RESPONSE | null {
+        return this.response;
+    }
 }
 
 export default ResponseAPI;

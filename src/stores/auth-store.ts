@@ -29,7 +29,6 @@ export const useAuthStore = defineStore("auth-store", {
                 return this.handleError(error);
             }
         },
-
         async login(input: IUserLogin): Promise<ResponseAPI<string>> {
             try {
                 const result = await api.post("/open/v1/auth/login", input);

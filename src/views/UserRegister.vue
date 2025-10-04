@@ -1,7 +1,7 @@
 <template>
-    <section class="bg-backgroundAuth h-screen w-screen text-white flex justify-center items-center">
-        <FormRegister />
-    </section>
+  <section class="bg-backgroundAuth h-screen w-screen text-white flex justify-center items-center">
+    <FormRegister/>
+  </section>
 </template>
 
 <script setup lang="ts">

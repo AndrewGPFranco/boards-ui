@@ -20,6 +20,10 @@ class BoardService {
     async getCategorias(): Promise<ResponseAPI<Array<string>>> {
         return await this.boardStore.getCategorias();
     }
+
+    async apagarBoard(id: string): Promise<ResponseAPI<string>> {
+        return await this.boardStore.apagarBoard(id);
+    }
 }
 
 export default BoardService;

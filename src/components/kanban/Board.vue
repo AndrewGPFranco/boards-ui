@@ -5,13 +5,28 @@
       <div class="flex flex-col gap-1">
         <div class="flex gap-2 items-center">
           <span id="status" class="rounded-full"></span>
-          <h1 class="font-bold text-lg text-white">{{ titulo }}</h1>
+          <h1 class="font-bold text-lg text-white">{{ board.titulo }}</h1>
         </div>
-        <span class="text-sm text-gray-400">{{ descricao }}</span>
+        <span class="text-sm text-gray-400">{{ board.descricao }}</span>
       </div>
-      <p class="bg-purple-600 flex items-center justify-center rounded-full w-6 h-6 text-sm text-white font-semibold">
-        {{ itensBoard.length }}
-      </p>
+      <div class="flex gap-3 items-center">
+        <p class="bg-purple-600 flex items-center justify-center rounded-full w-6 h-6 text-sm text-white font-semibold">
+          {{ board.itensBoard.length }}
+        </p>
+        <button class="flex items-center" @click="abrirOpcoesBoard">
+          <i class="pi pi-ellipsis-v text-gray-50" style="font-size: 1rem"></i>
+        </button>
+      </div>
+    </div>
+
+    <div
+        v-if="isExibirActions"
+        class="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
+    >
+      <ActionsBoard
+          :board="props.board"
+          @form-fechado="handleActionBoard"
+      />
     </div>
 
     <draggable
@@ -34,26 +49,30 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue"
 import draggable from "vuedraggable"
-import type {ItemBoard} from "@/types/interfaces/types.ts";
+import {type PropType, ref} from "vue"
+import type {IBoard} from "@/types/interfaces/types.ts";
+import ActionsBoard from "@/components/kanban/ActionsBoard.vue";
 
 const props = defineProps({
-  titulo: {
-    type: String,
+  board: {
+    type: Object as PropType<IBoard>,
     required: true,
-  },
-  descricao: {
-    type: String,
-    required: true,
-  },
-  itensBoard: {
-    type: Array as () => Array<ItemBoard>,
-    required: true,
-  },
+  }
 })
 
-const itens = ref([...props.itensBoard])
+const emit = defineEmits(["acao-realizada"])
+const isExibirActions = ref<boolean>(false);
+const itens = ref([...props.board.itensBoard])
+
+const abrirOpcoesBoard = () => {
+  isExibirActions.value = !isExibirActions.value
+}
+
+const handleActionBoard = () => {
+  emit("acao-realizada");
+  abrirOpcoesBoard();
+}
 </script>
 
 <style scoped>

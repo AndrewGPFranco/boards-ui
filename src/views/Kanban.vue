@@ -7,7 +7,7 @@
       </div>
       <div class="flex flex-col gap-5">
         <router-link :to="{name: 'Home'}"
-                     class="text-white flex justify-end items-center gap-4 hover:text-gray-200">
+                     class="text-white flex justify-end items-center gap-4 hover:text-hoverBtnVoltar">
           <i class="pi pi-arrow-left" style="font-size: 1rem"></i>
           Voltar
         </router-link>
@@ -54,9 +54,8 @@
         <Board v-if="boardsUsuario !== null"
                v-for="board in boardsUsuario"
                :key="`${board.id}-${board.itensBoard?.length || 0}`"
-               :titulo="board.titulo"
-               :descricao="board.descricao"
-               :itens-board="board.itensBoard"
+               :board="board"
+               @acao-realizada="getBoardsUsuario"
         />
       </div>
     </section>

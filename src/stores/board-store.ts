@@ -68,6 +68,22 @@ export const useBoardStore = defineStore("board-store", {
                 console.log(error)
                 return new ResponseAPI(true, []);
             }
-        }
+        },
+        async apagarBoard(id: string): Promise<ResponseAPI<string>> {
+            try {
+                const token: string | null = localStorage.getItem("token");
+
+                const response = await api.delete(`/api/v1/board/delete?id=${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+
+                return new ResponseAPI(false, response.data);
+            } catch (error) {
+                console.log(error)
+                return new ResponseAPI(true, "Ocorreu um erro ao excluir a board, tente novamente!");
+            }
+        },
     },
 });

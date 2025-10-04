@@ -23,3 +23,22 @@ export interface IAddItem {
     titulo: string;
     descricao: string;
 }
+
+export interface IBoard {
+    titulo: string;
+    descricao: string;
+    username: string;
+    createdAt: Date;
+    updatedAt: Date;
+    itensBoard: Array<ItemBoard>;
+}
+
+export interface ItemBoard {
+    id: string;
+    titulo: string;
+    descricao: string;
+    categoria: string;
+    createdAt: Date;
+    updateAt: Date;
+    finalizedA: Date;
+}

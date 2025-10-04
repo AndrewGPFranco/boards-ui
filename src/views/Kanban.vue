@@ -42,7 +42,7 @@
       />
     </div>
 
-    <section class="overflow-x-auto mt-20 pb-4">
+    <section class="overflow-x-auto mt-20 pb-6">
       <div class="inline-flex items-center gap-4 mx-auto">
         <Board v-if="boardsUsuario !== null"
                v-for="board in boardsUsuario"

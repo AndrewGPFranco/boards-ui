@@ -1,14 +1,15 @@
 <template>
-  <section id="board" class="bg-gray-50 flex flex-col gap-4 p-4 min-w-96 rounded-xl overflow-y-auto">
+  <section id="board"
+           class="bg-gray-900 border border-gray-800 flex flex-col gap-4 p-4 min-w-96 rounded-xl overflow-y-auto">
     <div class="flex items-center justify-between">
       <div class="flex flex-col gap-1">
         <div class="flex gap-2 items-center">
           <span id="status" class="rounded-full"></span>
-          <h1 class="font-bold text-lg">{{ titulo }}</h1>
+          <h1 class="font-bold text-lg text-white">{{ titulo }}</h1>
         </div>
-        <span class="text-sm text-gray-600">{{ descricao }}</span>
+        <span class="text-sm text-gray-400">{{ descricao }}</span>
       </div>
-      <p class="bg-gray-300 flex items-center justify-center rounded-full w-6 h-6 text-sm">
+      <p class="bg-purple-600 flex items-center justify-center rounded-full w-6 h-6 text-sm text-white font-semibold">
         {{ itensBoard.length }}
       </p>
     </div>
@@ -22,9 +23,10 @@
         drag-class="shadow-lg"
     >
       <template #item="{ element }">
-        <div class="bg-white shadow rounded-lg p-3 w-full cursor-move">
-          <p class="font-semibold">{{ element.titulo }}</p>
-          <p class="text-sm text-gray-600">{{ element.descricao }}</p>
+        <div
+            class="bg-gray-800 border border-gray-700 hover:border-purple-600 transition-colors shadow rounded-lg p-3 w-full cursor-move">
+          <p class="font-semibold text-white">{{ element.titulo }}</p>
+          <p class="text-sm text-gray-400">{{ element.descricao }}</p>
         </div>
       </template>
     </draggable>

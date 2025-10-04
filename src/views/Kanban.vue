@@ -5,19 +5,26 @@
         <h1 class="text-textBtn font-bold text-5xl">Quadros</h1>
         <p class="text-gray-400">Organize seus conteúdos preferidos de forma visual</p>
       </div>
-      <div class="flex gap-3">
-        <button
-            class="bg-btn p-2 pr-4 pl-4 text-white font-bold rounded-lg hover:bg-purple-700"
-            @click="handleViewFormBoard"
-        >
-          + Nova Board
-        </button>
-        <button
-            class="bg-btn p-2 pr-4 pl-4 text-white font-bold rounded-lg hover:bg-purple-700"
-            @click="handleViewFormItem"
-        >
-          + Novo Item
-        </button>
+      <div class="flex flex-col gap-5">
+        <router-link :to="{name: 'Home'}"
+                     class="text-white flex justify-end items-center gap-4 hover:text-gray-200">
+          <i class="pi pi-arrow-left" style="font-size: 1rem"></i>
+          Voltar
+        </router-link>
+        <div class="flex gap-3">
+          <button
+              class="bg-btn p-2 pr-4 pl-4 text-white font-bold rounded-lg hover:bg-purple-700"
+              @click="handleViewFormBoard"
+          >
+            + Nova Board
+          </button>
+          <button
+              class="bg-btn p-2 pr-4 pl-4 text-white font-bold rounded-lg hover:bg-purple-700"
+              @click="handleViewFormItem"
+          >
+            + Novo Item
+          </button>
+        </div>
       </div>
     </section>
 

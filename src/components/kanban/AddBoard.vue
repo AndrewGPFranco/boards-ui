@@ -50,12 +50,13 @@
 import z from "zod";
 import {ref} from "vue";
 import useToast from "@/composables/useToast.ts";
+import BoardService from "@/services/BoardService.ts";
 import type {IAddItem} from "@/types/interfaces/types.ts";
 
-const emit = defineEmits(["form-fechado"]);
+const boardService = new BoardService();
+const emit = defineEmits(["form-fechado", "new-board"]);
 
 const toast = useToast();
-
 const item = ref<IAddItem>({
   titulo: "",
   descricao: ""
@@ -72,12 +73,21 @@ const schema = z.object({
       .max(255, "Descrição muito longa"),
 });
 
-const addBoard = () => {
+const addBoard = async () => {
   const resultValidation = schema.safeParse(item.value);
 
   if (!resultValidation.success) {
     toast.error("Erro ao validar os dados");
     return;
+  }
+
+  const responseAPI = await boardService.addBoard(item.value);
+
+  if (responseAPI.getError())
+    toast.error(String(responseAPI.getResponse()));
+  else {
+    toast.success(String(responseAPI.getResponse()));
+    emit("new-board");
   }
 }
 

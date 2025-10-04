@@ -21,6 +21,7 @@
     >
       <AddBoard
           @form-fechado="showFormBoard"
+          @new-board="handleNewBoard"
       />
     </div>
 
@@ -56,6 +57,10 @@ const getBoardsUsuario = async () => {
     toast.error(String(responseAPI.getResponse()));
 
   boardsUsuario.value = responseAPI.getResponse();
+}
+
+const handleNewBoard = async () => {
+  await getBoardsUsuario();
 }
 
 onMounted(async () => {

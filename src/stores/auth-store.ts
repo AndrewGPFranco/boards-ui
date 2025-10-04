@@ -37,5 +37,8 @@ export const useAuthStore = defineStore("auth-store", {
                 return this.handleError(error);
             }
         },
+        logout(): void {
+            localStorage.removeItem("token");
+        }
     },
 });

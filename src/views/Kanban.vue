@@ -19,6 +19,7 @@
             + Nova Board
           </button>
           <button
+              v-if="boardsUsuario.length"
               class="bg-btn p-2 pr-4 pl-4 text-white font-bold rounded-lg hover:bg-purple-700"
               @click="handleViewFormItem"
           >

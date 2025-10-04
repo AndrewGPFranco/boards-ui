@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import {ref} from "vue"
 import draggable from "vuedraggable"
+import type {ItemBoard} from "@/types/interfaces/types.ts";
 
 const props = defineProps({
   titulo: {
@@ -45,7 +46,7 @@ const props = defineProps({
     required: true,
   },
   itensBoard: {
-    type: Array as () => { id: number; titulo: string; descricao: string }[],
+    type: Array as () => Array<ItemBoard>,
     required: true,
   },
 })

@@ -19,12 +19,13 @@ export interface IUserRegister {
     dataNascimento: Date;
 }
 
-export interface IAddItem {
+export interface IAddBoard {
     titulo: string;
     descricao: string;
 }
 
 export interface IBoard {
+    id: string;
     titulo: string;
     descricao: string;
     username: string;
@@ -41,4 +42,11 @@ export interface ItemBoard {
     createdAt: Date;
     updateAt: Date;
     finalizedA: Date;
+}
+
+export interface IAddItem {
+    titulo: string;
+    descricao: string;
+    categoryType: string;
+    idBoard: string;
 }

@@ -8,7 +8,7 @@
       <div>
         <button
             class="bg-btn p-2 pr-4 pl-4 text-white font-bold rounded-lg"
-            @click="showFormBoard"
+            @click="handleViewFormBoard"
         >
           + Novo Conteúdo
         </button>
@@ -20,7 +20,7 @@
         class="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
     >
       <AddBoard
-          @form-fechado="showFormBoard"
+          @form-fechado="handleViewFormBoard"
           @new-board="handleNewBoard"
       />
     </div>
@@ -29,6 +29,7 @@
       <Board v-if="boardsUsuario !== null" v-for="board in boardsUsuario"
              :key="board.titulo"
              :titulo="board.titulo"
+             :descricao="board.descricao"
              :itens-board="board.itensBoard"
       />
     </section>
@@ -46,7 +47,7 @@ const boardService = new BoardService();
 const boardsUsuario = ref<IBoard>(null);
 const exibirFormularioNovaBoard = ref<boolean>(false);
 
-const showFormBoard = () => {
+const handleViewFormBoard = () => {
   exibirFormularioNovaBoard.value = !exibirFormularioNovaBoard.value;
 }
 
@@ -61,6 +62,7 @@ const getBoardsUsuario = async () => {
 
 const handleNewBoard = async () => {
   await getBoardsUsuario();
+  handleViewFormBoard()
 }
 
 onMounted(async () => {

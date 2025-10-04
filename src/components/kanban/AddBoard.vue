@@ -87,11 +87,17 @@ const addBoard = async () => {
     toast.error(String(responseAPI.getResponse()));
   else {
     toast.success(String(responseAPI.getResponse()));
+    resetItem();
     emit("new-board");
   }
 }
 
 const avisaFormFechado = () => {
   emit("form-fechado");
+}
+
+const resetItem = () => {
+  item.value.titulo = "";
+  item.value.descricao = "";
 }
 </script>

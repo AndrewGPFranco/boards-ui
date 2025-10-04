@@ -1,9 +1,12 @@
 <template>
   <section class="bg-gray-50 flex flex-col gap-4 p-4 min-h-96 min-w-96 rounded-xl overflow-y-auto">
     <div class="flex items-center justify-between">
-      <div class="flex gap-2 items-center">
-        <span class="status rounded-full"></span>
-        <h1 class="font-bold text-lg">{{ titulo }}</h1>
+      <div class="flex flex-col gap-1">
+        <div class="flex gap-2 items-center">
+          <span class="status rounded-full"></span>
+          <h1 class="font-bold text-lg">{{ titulo }}</h1>
+        </div>
+        <span class="text-sm text-gray-600">{{ descricao }}</span>
       </div>
       <p class="bg-gray-300 flex items-center justify-center rounded-full w-6 h-6 text-sm">
         {{ itensBoard.length }}
@@ -34,6 +37,10 @@ import draggable from "vuedraggable"
 
 const props = defineProps({
   titulo: {
+    type: String,
+    required: true,
+  },
+  descricao: {
     type: String,
     required: true,
   },

@@ -31,7 +31,6 @@ export const useBoardStore = defineStore("board-store", {
                     },
                 })
 
-                console.log(response.data);
                 return new ResponseAPI(false, response.data);
             } catch (error) {
                 console.log(error)

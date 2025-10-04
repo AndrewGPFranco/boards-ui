@@ -1,25 +1,52 @@
 <template>
-  <section class="bg-gray-50 flex flex-col gap-4 p-4 min-h-96 min-w-96 rounded-xl">
-    <div class="flex  items-center justify-between">
-      <div class="flex gap-4 items-center">
-        <span class="status rounded-redondo"></span>
-        <h1 class="font-bold text-lg">{{ props.titulo }}</h1>
+  <section class="bg-gray-50 flex flex-col gap-4 p-4 min-h-96 min-w-96 rounded-xl overflow-y-auto">
+    <div class="flex items-center justify-between">
+      <div class="flex gap-2 items-center">
+        <span class="status rounded-full"></span>
+        <h1 class="font-bold text-lg">{{ titulo }}</h1>
       </div>
-      <p class="bg-gray-300 flex items-center justify-center rounded-full w-6 h-6">2</p>
+      <p class="bg-gray-300 flex items-center justify-center rounded-full w-6 h-6 text-sm">
+        {{ itensBoard.length }}
+      </p>
     </div>
+
+    <draggable
+        v-model="itens"
+        group="kanban"
+        item-key="id"
+        class="flex flex-col gap-3"
+        ghost-class="opacity-50"
+        drag-class="shadow-lg"
+    >
+      <template #item="{ element }">
+        <div class="bg-white shadow rounded-lg p-3 w-full cursor-move">
+          <p class="font-semibold">{{ element.titulo }}</p>
+          <p class="text-sm text-gray-600">{{ element.descricao }}</p>
+        </div>
+      </template>
+    </draggable>
   </section>
 </template>
 
 <script setup lang="ts">
+import {ref} from "vue"
+import draggable from "vuedraggable"
+
 const props = defineProps({
   titulo: {
     type: String,
     required: true,
-  }
+  },
+  itensBoard: {
+    type: Array as () => { id: number; titulo: string; descricao: string }[],
+    required: true,
+  },
 })
+
+const itens = ref([...props.itensBoard])
 </script>
 
-<style scoped lang="css">
+<style scoped>
 .status {
   height: 14px;
   width: 14px;

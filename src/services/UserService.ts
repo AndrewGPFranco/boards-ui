@@ -1,7 +1,6 @@
 import ResponseAPI from "@/utils/ResponseAPI";
 import {useAuthStore} from "@/stores/auth-store";
-import type {IUserRegister} from "@/types/interfaces/IUserRegister";
-import type {IUserLogin} from "@/types/interfaces/IUserLogin";
+import type {IUserLogin, IUserRegister} from "@/types/interfaces/types.ts";
 
 class UserService {
     private readonly authStore = useAuthStore();

@@ -2,8 +2,7 @@ import {AxiosError} from "axios";
 import {defineStore} from "pinia";
 import {api} from "@/utils/AxiosInstance";
 import ResponseAPI from "@/utils/ResponseAPI";
-import type {IUserLogin} from "@/types/interfaces/IUserLogin";
-import type {IUserRegister} from "@/types/interfaces/IUserRegister";
+import type {IUserLogin, IUserRegister} from "@/types/interfaces/types.ts";
 
 export const useAuthStore = defineStore("auth-store", {
     actions: {

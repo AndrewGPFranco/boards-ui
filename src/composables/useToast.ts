@@ -1,5 +1,5 @@
 import {ref} from "vue";
-import type {IToast} from "@/types/interfaces/IToast";
+import type {IToast} from "@/types/interfaces/types.ts";
 
 let id = 0;
 const toasts = ref<Array<IToast>>([]);

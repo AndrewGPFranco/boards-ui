@@ -64,10 +64,10 @@
 <script setup lang="ts">
 import z from "zod";
 import {ref} from "vue";
-import useToast from "@/composables/useToast";
-import type {IUserLogin} from "@/types/interfaces/IUserLogin";
-import UserService from "@/services/UserService";
 import router from "@/router";
+import useToast from "@/composables/useToast";
+import UserService from "@/services/UserService";
+import type {IUserLogin} from "@/types/interfaces/types.ts";
 
 const schema = z.object({
   email: z.email().min(5, "Email inválido").max(100, "Email muito longo"),

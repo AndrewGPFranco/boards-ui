@@ -155,7 +155,7 @@ import {ref} from "vue";
 import router from "@/router";
 import useToast from "@/composables/useToast";
 import UserService from "@/services/UserService";
-import type {IUserRegister} from "@/types/interfaces/IUserRegister";
+import type {IUserRegister} from "@/types/interfaces/types.ts";
 
 const toast = useToast();
 const authService = new UserService();
